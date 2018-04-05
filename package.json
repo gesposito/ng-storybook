@@ -9,7 +9,10 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "storybook": "start-storybook -p 9001 -c .storybook"
+    "prestorybook": "if [ ! -d node_modules ]; then npm install; fi",
+    "storybook": "start-storybook -p 9001 -c .storybook",
+    "storybook-build": "build-storybook -c .storybook -o .out",
+    "storybook-deploy": "storybook-to-ghpages"
   },
   "private": true,
   "dependencies": {
@@ -35,6 +38,7 @@
     "@angular/compiler-cli": "^5.2.0",
     "@angular/language-service": "^5.2.0",
     "@storybook/angular": "^3.4.0",
+    "@storybook/storybook-deployer": "^2.3.0",
     "@types/jasmine": "~2.8.3",
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "~6.0.60",
