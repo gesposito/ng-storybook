@@ -1,8 +1,13 @@
 import { storiesOf, moduleMetadata } from "@storybook/angular";
 
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { StoreModule } from "@ngrx/store";
 
 import { AlertClose } from "./AlertClose.example";
+import {
+  AlertCloseWithStore,
+  reducer as alertReducer
+} from "./AlertCloseWithStore.example";
 
 storiesOf("Alert", module)
   .addDecorator(
@@ -39,4 +44,17 @@ storiesOf("Alert", module)
   .add("Chiusura", () => ({
     component: AlertClose,
     props: {}
+  }))
+  .add("Esempio con Store", () => ({
+    component: AlertCloseWithStore,
+    moduleMetadata: {
+      imports: [
+        StoreModule.forRoot({
+          root: alertReducer
+        })
+      ],
+      schemas: [],
+      declarations: [],
+      providers: []
+    }
   }));
